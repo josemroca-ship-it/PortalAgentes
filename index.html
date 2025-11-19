@@ -11,25 +11,24 @@
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
   />
 
   <style>
     :root {
-      --bg: #020617;
-      --bg-soft: #020617;
-      --card-bg: #020617;
-      --card-outline: rgba(148, 163, 184, 0.35);
-      --primary: #38bdf8;
-      --primary-soft: rgba(56, 189, 248, 0.15);
+      --bg: #0b1726;
+      --bg-soft: #132435;
+      --card-bg: #15263b;
+      --card-outline: rgba(148, 163, 184, 0.4);
+      --primary: #3b82f6;
+      --primary-soft: rgba(59, 130, 246, 0.15);
       --accent: #22c55e;
       --text: #e5e7eb;
       --muted: #9ca3af;
       --border-radius-lg: 1.5rem;
       --border-radius-md: 1rem;
-      --shadow-soft: 0 18px 50px rgba(15, 23, 42, 0.85);
+      --shadow-soft: 0 18px 50px rgba(15, 23, 42, 0.55);
       --max-width: 1120px;
       --transition-fast: 180ms ease-out;
     }
@@ -42,7 +41,7 @@
 
     body {
       font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: radial-gradient(circle at top left, #0f172a 0, #020617 45%, #000 100%);
+      background: radial-gradient(circle at top left, #1d3557 0, #0b1726 45%, #020617 100%);
       color: var(--text);
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
@@ -66,8 +65,8 @@
       top: 0;
       z-index: 20;
       backdrop-filter: blur(16px);
-      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.9), transparent);
-      border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.92), transparent);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
     }
 
     .navbar-inner {
@@ -90,11 +89,11 @@
       width: 32px;
       height: 32px;
       border-radius: 999px;
-      background: radial-gradient(circle at 30% 20%, #38bdf8, #2563eb 50%, #0f172a 100%);
+      background: radial-gradient(circle at 30% 20%, #60a5fa, #1d4ed8 60%, #0b1726 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 8px 25px rgba(56, 189, 248, 0.6);
+      box-shadow: 0 8px 25px rgba(59, 130, 246, 0.7);
     }
 
     .brand-logo span {
@@ -172,8 +171,8 @@
       font-size: 0.8rem;
       padding: 0.25rem 0.65rem;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.8);
-      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(148, 163, 184, 0.5);
       margin-bottom: 0.9rem;
     }
 
@@ -182,7 +181,7 @@
       height: 8px;
       border-radius: 999px;
       background: radial-gradient(circle at 30% 20%, var(--accent), #22c55e);
-      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.15);
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.18);
     }
 
     .hero-title {
@@ -193,7 +192,7 @@
     }
 
     .hero-title span {
-      background: linear-gradient(to right, #38bdf8, #22c55e);
+      background: linear-gradient(to right, #60a5fa, #22c55e);
       -webkit-background-clip: text;
       color: transparent;
     }
@@ -229,26 +228,26 @@
     }
 
     .btn-primary {
-      background: radial-gradient(circle at 0 0, #38bdf8, #0ea5e9 40%, #0369a1 100%);
-      border-color: rgba(56, 189, 248, 0.7);
+      background: radial-gradient(circle at 0 0, #60a5fa, #3b82f6 40%, #1d4ed8 100%);
+      border-color: rgba(59, 130, 246, 0.85);
       color: #f9fafb;
-      box-shadow: 0 18px 40px rgba(8, 47, 73, 0.95);
+      box-shadow: 0 18px 40px rgba(30, 64, 175, 0.9);
     }
 
     .btn-primary:hover {
       transform: translateY(-1px) scale(1.01);
-      box-shadow: 0 22px 55px rgba(8, 47, 73, 1);
+      box-shadow: 0 22px 55px rgba(30, 64, 175, 1);
     }
 
     .btn-ghost {
-      background: rgba(15, 23, 42, 0.8);
-      border-color: rgba(148, 163, 184, 0.55);
+      background: rgba(15, 23, 42, 0.65);
+      border-color: rgba(148, 163, 184, 0.6);
       color: var(--muted);
     }
 
     .btn-ghost:hover {
       color: var(--text);
-      background: rgba(15, 23, 42, 1);
+      background: rgba(15, 23, 42, 0.9);
       transform: translateY(-1px);
     }
 
@@ -275,19 +274,19 @@
     .hero-orbit {
       position: relative;
       border-radius: 999px;
-      background: radial-gradient(circle at 20% 20%, #38bdf8, #1e293b 45%, #020617 100%);
+      background: radial-gradient(circle at 20% 20%, #60a5fa, #1f2937 55%, #0b1726 100%);
       padding: 1px;
-      box-shadow: 0 26px 60px rgba(15, 23, 42, 0.95);
+      box-shadow: 0 26px 60px rgba(15, 23, 42, 0.8);
     }
 
     .hero-orbit-inner {
       border-radius: inherit;
       background:
-        radial-gradient(circle at 10% 0, rgba(59, 130, 246, 0.5), transparent 60%),
+        radial-gradient(circle at 10% 0, rgba(96, 165, 250, 0.5), transparent 60%),
         radial-gradient(circle at 85% 100%, rgba(34, 197, 94, 0.35), transparent 60%),
-        #020617;
+        #0f172a;
       padding: 1.4rem 1.3rem 1.5rem;
-      border: 1px solid rgba(148, 163, 184, 0.35);
+      border: 1px solid rgba(148, 163, 184, 0.5);
       position: relative;
       overflow: hidden;
     }
@@ -296,7 +295,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at top center, rgba(248, 250, 252, 0.04), transparent 55%);
+      background: radial-gradient(circle at top center, rgba(248, 250, 252, 0.05), transparent 55%);
       pointer-events: none;
     }
 
@@ -307,8 +306,8 @@
       padding: 0.25rem 0.7rem;
       border-radius: 999px;
       font-size: 0.7rem;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      background: rgba(15, 23, 42, 0.9);
       color: var(--muted);
       margin-bottom: 0.9rem;
     }
@@ -329,8 +328,8 @@
       font-size: 0.7rem;
       padding: 0.25rem 0.6rem;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.3);
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.4);
       color: var(--muted);
       display: inline-flex;
       align-items: center;
@@ -362,8 +361,8 @@
 
     .hero-matrix-card {
       border-radius: 0.9rem;
-      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.12), transparent 55%);
-      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: radial-gradient(circle at 0 0, rgba(96, 165, 250, 0.2), transparent 55%);
+      border: 1px solid rgba(148, 163, 184, 0.55);
       padding: 0.5rem 0.6rem;
       font-size: 0.72rem;
       color: var(--muted);
@@ -374,14 +373,14 @@
     }
 
     .hero-matrix-card:nth-child(2n) {
-      background: radial-gradient(circle at 100% 0, rgba(34, 197, 94, 0.18), transparent 55%);
+      background: radial-gradient(circle at 100% 0, rgba(34, 197, 94, 0.22), transparent 55%);
     }
 
     .hero-matrix-label {
       font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: rgba(148, 163, 184, 0.85);
+      color: rgba(148, 163, 184, 0.9);
       margin-bottom: 0.2rem;
     }
 
@@ -394,15 +393,15 @@
 
     .hero-matrix-meta {
       font-size: 0.7rem;
-      opacity: 0.9;
+      opacity: 0.95;
     }
 
     .hero-glow {
       position: absolute;
       inset: -40%;
-      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.08), transparent),
+      background: radial-gradient(circle at 0 0, rgba(96, 165, 250, 0.12), transparent),
                   radial-gradient(circle at 100% 0, rgba(34, 197, 94, 0.12), transparent);
-      opacity: 0.7;
+      opacity: 0.8;
       z-index: -1;
       pointer-events: none;
     }
@@ -426,7 +425,7 @@
       font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      color: rgba(148, 163, 184, 0.9);
+      color: rgba(191, 219, 254, 0.9);
     }
 
     .section-title {
@@ -444,9 +443,9 @@
       margin-bottom: 2rem;
       border-radius: var(--border-radius-lg);
       padding: 1.25rem 1.15rem 1.3rem;
-      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.22), transparent 55%),
-                  radial-gradient(circle at 100% 100%, rgba(15, 23, 42, 0.95), #020617 80%);
-      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: radial-gradient(circle at 0 0, rgba(96, 165, 250, 0.32), transparent 55%),
+                  radial-gradient(circle at 100% 100%, rgba(15, 23, 42, 0.95), #0b1726 80%);
+      border: 1px solid rgba(148, 163, 184, 0.6);
       box-shadow: var(--shadow-soft);
       position: relative;
       overflow: hidden;
@@ -474,7 +473,7 @@
       align-items: center;
       justify-content: center;
       background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.7);
+      border: 1px solid rgba(148, 163, 184, 0.75);
     }
 
     .sector-icon i {
@@ -494,7 +493,7 @@
 
     .sector-tagline {
       font-size: 0.78rem;
-      color: rgba(209, 213, 219, 0.9);
+      color: rgba(219, 234, 254, 0.98);
     }
 
     .agents-grid {
@@ -519,7 +518,7 @@
       position: relative;
       border-radius: var(--border-radius-md);
       padding: 0.75rem 0.8rem;
-      background: rgba(15, 23, 42, 0.96);
+      background: var(--card-bg);
       border: 1px solid var(--card-outline);
       cursor: pointer;
       transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
@@ -534,7 +533,7 @@
       position: absolute;
       inset: 0;
       border-radius: inherit;
-      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.22), transparent 55%);
+      background: radial-gradient(circle at top left, rgba(96, 165, 250, 0.22), transparent 60%);
       opacity: 0;
       transition: opacity var(--transition-fast);
       pointer-events: none;
@@ -542,9 +541,9 @@
 
     .agent-card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
-      border-color: rgba(56, 189, 248, 0.85);
-      background: rgba(15, 23, 42, 1);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.75);
+      border-color: rgba(96, 165, 250, 0.95);
+      background: #1e293b;
     }
 
     .agent-card:hover::before {
@@ -562,7 +561,7 @@
       height: 30px;
       border-radius: 999px;
       background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.7);
+      border: 1px solid rgba(148, 163, 184, 0.8);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -590,7 +589,7 @@
       align-items: center;
       justify-content: space-between;
       font-size: 0.72rem;
-      color: rgba(148, 163, 184, 0.9);
+      color: rgba(191, 219, 254, 0.95);
     }
 
     .agent-footer span {
@@ -601,6 +600,166 @@
 
     .agent-footer i {
       font-size: 0.65rem;
+    }
+
+    /* MODAL */
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 40;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 180ms ease-out;
+    }
+
+    .modal-overlay.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-window {
+      background: radial-gradient(circle at 0 0, rgba(96, 165, 250, 0.28), transparent 55%),
+                  #0b1726;
+      border-radius: 1.25rem;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      box-shadow: 0 22px 60px rgba(15, 23, 42, 0.95);
+      max-width: 720px;
+      width: 90vw;
+      max-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transform: translateY(10px) scale(0.99);
+      transition: transform 180ms ease-out;
+    }
+
+    .modal-overlay.visible .modal-window {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-window.maximized {
+      max-width: none;
+      max-height: none;
+      width: 96vw;
+      height: 94vh;
+    }
+
+    .modal-header {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      background: rgba(15, 23, 42, 0.96);
+    }
+
+    .modal-header-left {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      min-width: 0;
+    }
+
+    .modal-icon-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.75);
+      flex-shrink: 0;
+    }
+
+    .modal-header-texts {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+      min-width: 0;
+    }
+
+    .modal-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    .modal-subtitle {
+      font-size: 0.75rem;
+      color: var(--muted);
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    .modal-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .modal-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.95);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.75rem;
+      color: rgba(219, 234, 254, 0.98);
+      transition: background 150ms ease-out, transform 150ms ease-out, border-color 150ms ease-out;
+    }
+
+    .modal-btn:hover {
+      background: rgba(15, 23, 42, 1);
+      border-color: rgba(248, 250, 252, 0.9);
+      transform: translateY(-1px);
+    }
+
+    .modal-btn.close {
+      border-color: rgba(248, 113, 113, 0.7);
+      color: #fecaca;
+    }
+
+    .modal-body {
+      padding: 1rem 1rem 0.5rem;
+      overflow-y: auto;
+      font-size: 0.85rem;
+      color: rgba(226, 232, 240, 0.96);
+    }
+
+    .modal-body p {
+      margin-bottom: 0.7rem;
+      line-height: 1.5;
+    }
+
+    .modal-footer {
+      padding: 0.75rem 1rem 0.9rem;
+      border-top: 1px solid rgba(148, 163, 184, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      background: rgba(15, 23, 42, 0.97);
+      font-size: 0.78rem;
+      color: rgba(191, 219, 254, 0.96);
+    }
+
+    .modal-footer-left {
+      max-width: 60%;
     }
 
     /* CTA FINAL */
@@ -614,8 +773,8 @@
     .cta-box {
       border-radius: var(--border-radius-lg);
       background:
-        radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.5), transparent 65%),
-        radial-gradient(circle at 100% 100%, rgba(34, 197, 94, 0.4), #020617 85%);
+        radial-gradient(circle at 0 0, rgba(96, 165, 250, 0.6), transparent 65%),
+        radial-gradient(circle at 100% 100%, rgba(34, 197, 94, 0.4), #0b1726 85%);
       border: 1px solid rgba(148, 163, 184, 0.6);
       padding: 1.4rem 1.35rem;
       display: flex;
@@ -631,7 +790,7 @@
 
     .cta-text {
       font-size: 0.86rem;
-      color: rgba(226, 232, 240, 0.9);
+      color: rgba(226, 232, 240, 0.95);
       max-width: 34rem;
     }
 
@@ -646,16 +805,16 @@
 
     .cta-meta {
       font-size: 0.78rem;
-      color: rgba(226, 232, 240, 0.95);
+      color: rgba(226, 232, 240, 0.96);
     }
 
     /* FOOTER */
 
     footer {
       font-size: 0.75rem;
-      color: rgba(148, 163, 184, 0.9);
+      color: rgba(191, 219, 254, 0.9);
       padding: 1.5rem 1.25rem 2rem;
-      border-top: 1px solid rgba(30, 64, 175, 0.5);
+      border-top: 1px solid rgba(59, 130, 246, 0.5);
       margin-top: auto;
     }
 
@@ -670,7 +829,7 @@
     }
 
     .footer-inner span {
-      opacity: 0.85;
+      opacity: 0.9;
     }
   </style>
 </head>
@@ -820,7 +979,9 @@
 
           <div class="agents-grid">
             <!-- Preadmisión Pacientes quirúrgicos -->
-            <a href="#contacto" class="agent-card">
+            <a href="#"
+               class="agent-card"
+               data-agent-id="salud-quirurgicos">
               <div class="agent-header">
                 <div class="agent-icon">
                   <i class="fa-solid fa-bed-pulse"></i>
@@ -845,7 +1006,9 @@
             </a>
 
             <!-- Copilot ejecutivos -->
-            <a href="#contacto" class="agent-card">
+            <a href="#"
+               class="agent-card"
+               data-agent-id="salud-copilot">
               <div class="agent-header">
                 <div class="agent-icon">
                   <i class="fa-solid fa-user-tie"></i>
@@ -870,7 +1033,9 @@
             </a>
 
             <!-- Preadmisión procedimientos clínicos -->
-            <a href="#contacto" class="agent-card">
+            <a href="#"
+               class="agent-card"
+               data-agent-id="salud-procedimientos">
               <div class="agent-header">
                 <div class="agent-icon">
                   <i class="fa-solid fa-clipboard-list"></i>
@@ -917,7 +1082,9 @@
 
           <div class="agents-grid">
             <!-- Seguros salud -->
-            <a href="#contacto" class="agent-card">
+            <a href="#"
+               class="agent-card"
+               data-agent-id="seguros-salud">
               <div class="agent-header">
                 <div class="agent-icon">
                   <i class="fa-solid fa-shield-heart"></i>
@@ -942,7 +1109,9 @@
             </a>
 
             <!-- Onboarding Clientes -->
-            <a href="#contacto" class="agent-card">
+            <a href="#"
+               class="agent-card"
+               data-agent-id="seguros-onboarding">
               <div class="agent-header">
                 <div class="agent-icon">
                   <i class="fa-solid fa-user-plus"></i>
@@ -989,7 +1158,9 @@
 
           <div class="agents-grid">
             <!-- Operaciones Comex -->
-            <a href="#contacto" class="agent-card">
+            <a href="#"
+               class="agent-card"
+               data-agent-id="fin-comex-operaciones">
               <div class="agent-header">
                 <div class="agent-icon">
                   <i class="fa-solid fa-globe"></i>
@@ -1014,7 +1185,9 @@
             </a>
 
             <!-- Alta operación COMEX -->
-            <a href="#contacto" class="agent-card">
+            <a href="#"
+               class="agent-card"
+               data-agent-id="fin-comex-alta">
               <div class="agent-header">
                 <div class="agent-icon">
                   <i class="fa-solid fa-file-circle-plus"></i>
@@ -1077,9 +1250,179 @@
     </footer>
   </div>
 
+  <!-- MODAL DE AGENTE -->
+  <div id="agent-modal-overlay" class="modal-overlay">
+    <div id="agent-modal-window" class="modal-window">
+      <header class="modal-header">
+        <div class="modal-header-left">
+          <div class="modal-icon-circle">
+            <i id="agent-modal-icon" class="fa-solid fa-robot"></i>
+          </div>
+          <div class="modal-header-texts">
+            <div id="agent-modal-title" class="modal-title">Agente IA Megafy</div>
+            <div id="agent-modal-subtitle" class="modal-subtitle">Demo en Megafy.net</div>
+          </div>
+        </div>
+        <div class="modal-controls">
+          <button id="agent-modal-maximize" class="modal-btn" type="button" aria-label="Maximizar">
+            <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+          </button>
+          <button id="agent-modal-close" class="modal-btn close" type="button" aria-label="Cerrar">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </header>
+      <div class="modal-body">
+        <p id="agent-modal-description">
+          Estás a punto de abrir la experiencia del agente IA seleccionada en Megafy.net.
+        </p>
+        <p>
+          En esta demo podrás navegar el flujo del agente, entender su lógica y ver cómo se integra con tus procesos.
+        </p>
+      </div>
+      <footer class="modal-footer">
+        <div class="modal-footer-left" id="agent-modal-footer-text">
+          Las demos se abren en una nueva pestaña sobre <strong>www.megafy.net</strong>.
+        </div>
+        <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+          <a id="agent-modal-link"
+             href="https://www.megafy.net"
+             class="btn btn-primary"
+             target="_blank"
+             rel="noopener">
+            <i class="fa-solid fa-play"></i>
+            Abrir demo en Megafy.net
+          </a>
+          <button id="agent-modal-close-footer" class="btn btn-ghost" type="button">
+            <i class="fa-solid fa-xmark"></i>
+            Cerrar
+          </button>
+        </div>
+      </footer>
+    </div>
+  </div>
+
   <script>
     // Año dinámico en el footer
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Config sencillo para títulos e iconos (el link es siempre www.megafy.net por ahora)
+    const AGENTS_CONFIG = {
+      "salud-quirurgicos": {
+        title: "Preadmisión Pacientes quirúrgicos",
+        subtitle: "Sector Salud · Preadmisión quirúrgica",
+        iconClass: "fa-solid fa-bed-pulse"
+      },
+      "salud-copilot": {
+        title: "Copilot ejecutivos",
+        subtitle: "Sector Salud · Gestión ejecutiva",
+        iconClass: "fa-solid fa-user-tie"
+      },
+      "salud-procedimientos": {
+        title: "Preadmisión procedimientos clínicos",
+        subtitle: "Sector Salud · Procedimientos ambulatorios",
+        iconClass: "fa-solid fa-clipboard-list"
+      },
+      "seguros-salud": {
+        title: "Seguros salud",
+        subtitle: "Sector Seguros · Productos de salud",
+        iconClass: "fa-solid fa-shield-heart"
+      },
+      "seguros-onboarding": {
+        title: "Onboarding Clientes",
+        subtitle: "Sector Seguros · Onboarding digital",
+        iconClass: "fa-solid fa-user-plus"
+      },
+      "fin-comex-operaciones": {
+        title: "Operaciones Comex",
+        subtitle: "Sector Financiero · COMEX",
+        iconClass: "fa-solid fa-globe"
+      },
+      "fin-comex-alta": {
+        title: "Alta operación COMEX",
+        subtitle: "Sector Financiero · Alta de operaciones",
+        iconClass: "fa-solid fa-file-circle-plus"
+      }
+    };
+
+    const DEMO_URL = "https://www.megafy.net";
+
+    const modalOverlay = document.getElementById("agent-modal-overlay");
+    const modalWindow = document.getElementById("agent-modal-window");
+    const modalTitle = document.getElementById("agent-modal-title");
+    const modalSubtitle = document.getElementById("agent-modal-subtitle");
+    const modalIcon = document.getElementById("agent-modal-icon");
+    const modalLink = document.getElementById("agent-modal-link");
+    const btnClose = document.getElementById("agent-modal-close");
+    const btnCloseFooter = document.getElementById("agent-modal-close-footer");
+    const btnMaximize = document.getElementById("agent-modal-maximize");
+
+    let isMaximized = false;
+
+    function openAgentModal(agentId) {
+      const config = AGENTS_CONFIG[agentId] || {};
+
+      modalTitle.textContent = config.title || "Agente IA Megafy";
+      modalSubtitle.textContent = config.subtitle || "Demo en Megafy.net";
+
+      // Icono
+      modalIcon.className = config.iconClass || "fa-solid fa-robot";
+
+      // Link siempre a Megafy.net (luego puedes personalizar por agente)
+      modalLink.href = DEMO_URL;
+
+      // Estado de tamaño
+      isMaximized = false;
+      modalWindow.classList.remove("maximized");
+      btnMaximize.innerHTML = '<i class="fa-solid fa-up-right-and-down-left-from-center"></i>';
+
+      // Mostrar
+      modalOverlay.classList.add("visible");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeAgentModal() {
+      modalOverlay.classList.remove("visible");
+      document.body.style.overflow = "";
+    }
+
+    function toggleMaximizeModal() {
+      isMaximized = !isMaximized;
+      if (isMaximized) {
+        modalWindow.classList.add("maximized");
+        btnMaximize.innerHTML = '<i class="fa-solid fa-down-left-and-up-right-to-center"></i>';
+      } else {
+        modalWindow.classList.remove("maximized");
+        btnMaximize.innerHTML = '<i class="fa-solid fa-up-right-and-down-left-from-center"></i>';
+      }
+    }
+
+    // Listeners: todos los agentes abren la ventana
+    document.querySelectorAll(".agent-card").forEach(card => {
+      card.addEventListener("click", (e) => {
+        e.preventDefault();
+        const agentId = card.getAttribute("data-agent-id");
+        openAgentModal(agentId);
+      });
+    });
+
+    btnClose.addEventListener("click", closeAgentModal);
+    btnCloseFooter.addEventListener("click", closeAgentModal);
+    btnMaximize.addEventListener("click", toggleMaximizeModal);
+
+    // Cerrar al hacer clic fuera de la ventana
+    modalOverlay.addEventListener("click", (e) => {
+      if (e.target === modalOverlay) {
+        closeAgentModal();
+      }
+    });
+
+    // Cerrar con ESC
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && modalOverlay.classList.contains("visible")) {
+        closeAgentModal();
+      }
+    });
   </script>
 </body>
 </html>
