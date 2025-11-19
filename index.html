@@ -23,7 +23,7 @@
       --card-outline: #e5e7eb;
       --primary: #2563eb;
       --primary-soft: rgba(37, 99, 235, 0.08);
-      --brand-red: #e11d48; /* toque rojo tipo logo */
+      --brand-red: #e11d48;
       --accent: #16a34a;
       --text: #0f172a;
       --muted: #6b7280;
@@ -90,13 +90,13 @@
       height: 32px;
       display: flex;
       align-items: center;
-      background: #0b2340;       /* azul de fondo del logo */
-      padding: 4px 10px;         /* margen interno para que “respire” */
-      border-radius: 6px;        /* opcional, si lo quieres con bordes suaves */
+      background: #0b2340; /* azul de fondo como en el logo */
+      padding: 4px 10px;
+      border-radius: 6px;
     }
 
     .brand-logo img {
-      height: 32px;
+      height: 24px;
       width: auto;
       display: block;
     }
@@ -350,7 +350,7 @@
     }
 
     .hero-badge:nth-child(3) i {
-      color: var(--brand-red); /* toque rojo en COMEX */
+      color: var(--brand-red);
     }
 
     .hero-mini-title {
@@ -890,7 +890,7 @@
         <div>
           <div class="eyebrow">
             <span class="eyebrow-dot"></span>
-            Ejemplos reales en producción
+            Experimentos reales en producción
           </div>
           <h1 class="hero-title">
             Bienvenido al laboratorio de agentes IA de <span>Megafy</span>
@@ -1247,7 +1247,7 @@
           <h3 class="cta-title">¿Quieres un agente IA a medida para tu proceso?</h3>
           <p class="cta-text">
             Partimos de estos agentes preconstruidos y los adaptamos a tu operación, tus sistemas y tus
-            indicadores de negocio. Podemos conectarnos a cualquier sistema existente.
+            indicadores de negocio. Podemos conectarnos a tu BPM, core, RPA o soluciones cloud existentes.
           </p>
           <div class="cta-footer">
             <div class="cta-meta">
@@ -1287,7 +1287,7 @@
           </div>
           <div class="modal-header-texts">
             <div id="agent-modal-title" class="modal-title">Agente IA Megafy</div>
-            <div id="agent-modal-subtitle" class="modal-subtitle">Demo en Megafy.net</div>
+            <div id="agent-modal-subtitle" class="modal-subtitle">Demo de agente IA</div>
           </div>
         </div>
         <div class="modal-controls">
@@ -1301,24 +1301,24 @@
       </header>
       <div class="modal-body">
         <p id="agent-modal-description">
-          Estás a punto de abrir la experiencia del agente IA seleccionada en Megafy.net.
+          Estás a punto de abrir la experiencia del agente IA seleccionada en una nueva pestaña.
         </p>
         <p>
-          En esta demo podrás navegar el flujo del agente, entender su lógica y ver cómo se integra con tus procesos.
+          En la demo podrás navegar el flujo del agente, entender su lógica y ver cómo se integra con tus procesos.
         </p>
       </div>
       <footer class="modal-footer">
         <div class="modal-footer-left" id="agent-modal-footer-text">
-          Las demos se abren en una nueva pestaña sobre <strong>www.megafy.net</strong>.
+          Las demos se abren en una nueva pestaña para que puedas volver a este laboratorio cuando quieras.
         </div>
         <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
           <a id="agent-modal-link"
-             href="https://www.megafy.net"
+             href="#"
              class="btn btn-primary"
              target="_blank"
              rel="noopener">
             <i class="fa-solid fa-play"></i>
-            Abrir demo en Megafy.net
+            Abrir demo
           </a>
           <button id="agent-modal-close-footer" class="btn btn-ghost" type="button">
             <i class="fa-solid fa-xmark"></i>
@@ -1333,7 +1333,7 @@
     // Año dinámico en el footer
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Config sencillo para títulos e iconos
+    // Config de agentes con links específicos
     const AGENTS_CONFIG = {
       "salud-quirurgicos": {
         title: "Preadmisión Pacientes quirúrgicos",
@@ -1344,35 +1344,40 @@
       "salud-copilot": {
         title: "Copilot ejecutivos",
         subtitle: "Sector Salud · Gestión ejecutiva",
-        iconClass: "fa-solid fa-user-tie"
+        iconClass: "fa-solid fa-user-tie",
+        link: "https://copilot.vercel.app/"
       },
       "salud-procedimientos": {
         title: "Preadmisión procedimientos clínicos",
         subtitle: "Sector Salud · Procedimientos ambulatorios",
-        iconClass: "fa-solid fa-clipboard-list"
+        iconClass: "fa-solid fa-clipboard-list",
+        link: "https://www.megafy.net" // provisional
       },
       "seguros-salud": {
         title: "Seguros salud",
         subtitle: "Sector Seguros · Productos de salud",
-        iconClass: "fa-solid fa-shield-heart"
+        iconClass: "fa-solid fa-shield-heart",
+        link: "https://www.megafy.net" // provisional
       },
       "seguros-onboarding": {
         title: "Onboarding Clientes",
         subtitle: "Sector Seguros · Onboarding digital",
-        iconClass: "fa-solid fa-user-plus"
+        iconClass: "fa-solid fa-user-plus",
+        link: "https://www.megafy.net" // provisional
       },
       "fin-comex-operaciones": {
         title: "Operaciones Comex",
         subtitle: "Sector Financiero · COMEX",
-        iconClass: "fa-solid fa-globe"
+        iconClass: "fa-solid fa-globe",
+        link: "https://www.megafy.net" // provisional
       },
       "fin-comex-alta": {
         title: "Alta operación COMEX",
         subtitle: "Sector Financiero · Alta de operaciones",
-        iconClass: "fa-solid fa-file-circle-plus"
+        iconClass: "fa-solid fa-file-circle-plus",
+        link: "https://www.megafy.net" // provisional
       }
     };
-
 
     const modalOverlay = document.getElementById("agent-modal-overlay");
     const modalWindow = document.getElementById("agent-modal-window");
@@ -1390,13 +1395,13 @@
       const config = AGENTS_CONFIG[agentId] || {};
 
       modalTitle.textContent = config.title || "Agente IA Megafy";
-      modalSubtitle.textContent = config.subtitle || "Demo Megafy.net";
+      modalSubtitle.textContent = config.subtitle || "Demo de agente IA";
 
       // Icono
       modalIcon.className = config.iconClass || "fa-solid fa-robot";
 
-      // Link (de momento siempre Megafy.net)
-      modalLink.href = DEMO_URL;
+      // Link específico por agente (Megafy por defecto)
+      modalLink.href = config.link || "https://www.megafy.net";
 
       // Estado de tamaño
       isMaximized = false;
