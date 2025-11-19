@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Laboratorio de agentes IA | Megafy</title>
+
+  <!-- Fuente -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Iconos -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-soft: #020617;
+      --card-bg: #020617;
+      --card-outline: rgba(148, 163, 184, 0.35);
+      --primary: #38bdf8;
+      --primary-soft: rgba(56, 189, 248, 0.15);
+      --accent: #22c55e;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border-radius-lg: 1.5rem;
+      --border-radius-md: 1rem;
+      --shadow-soft: 0 18px 50px rgba(15, 23, 42, 0.85);
+      --max-width: 1120px;
+      --transition-fast: 180ms ease-out;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top left, #0f172a 0, #020617 45%, #000 100%);
+      color: var(--text);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* NAVBAR */
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.9), transparent);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+    }
+
+    .navbar-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .brand-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #38bdf8, #2563eb 50%, #0f172a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 25px rgba(56, 189, 248, 0.6);
+    }
+
+    .brand-logo span {
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .brand-text-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .brand-text-sub {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 0.15rem;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      transition: width var(--transition-fast);
+      border-radius: 999px;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* HERO */
+
+    .hero {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 3.5rem 1.25rem 2.5rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        padding-top: 2.5rem;
+      }
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      margin-bottom: 0.9rem;
+    }
+
+    .eyebrow-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, var(--accent), #22c55e);
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.15);
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 3.15vw, 3rem);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-title span {
+      background: linear-gradient(to right, #38bdf8, #22c55e);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.97rem;
+      color: var(--muted);
+      max-width: 34rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      border-radius: 999px;
+      padding: 0.55rem 1rem;
+      font-size: 0.85rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at 0 0, #38bdf8, #0ea5e9 40%, #0369a1 100%);
+      border-color: rgba(56, 189, 248, 0.7);
+      color: #f9fafb;
+      box-shadow: 0 18px 40px rgba(8, 47, 73, 0.95);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px) scale(1.01);
+      box-shadow: 0 22px 55px rgba(8, 47, 73, 1);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.8);
+      border-color: rgba(148, 163, 184, 0.55);
+      color: var(--muted);
+    }
+
+    .btn-ghost:hover {
+      color: var(--text);
+      background: rgba(15, 23, 42, 1);
+      transform: translateY(-1px);
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-meta strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* Hero visual */
+
+    .hero-visual {
+      position: relative;
+      padding: 0.1rem;
+    }
+
+    .hero-orbit {
+      position: relative;
+      border-radius: 999px;
+      background: radial-gradient(circle at 20% 20%, #38bdf8, #1e293b 45%, #020617 100%);
+      padding: 1px;
+      box-shadow: 0 26px 60px rgba(15, 23, 42, 0.95);
+    }
+
+    .hero-orbit-inner {
+      border-radius: inherit;
+      background:
+        radial-gradient(circle at 10% 0, rgba(59, 130, 246, 0.5), transparent 60%),
+        radial-gradient(circle at 85% 100%, rgba(34, 197, 94, 0.35), transparent 60%),
+        #020617;
+      padding: 1.4rem 1.3rem 1.5rem;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-orbit-inner::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top center, rgba(248, 250, 252, 0.04), transparent 55%);
+      pointer-events: none;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.85);
+      color: var(--muted);
+      margin-bottom: 0.9rem;
+    }
+
+    .chip i {
+      font-size: 0.75rem;
+      color: var(--primary);
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-badge {
+      font-size: 0.7rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .hero-badge i {
+      font-size: 0.75rem;
+      color: var(--accent);
+    }
+
+    .hero-mini-title {
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-bottom: 0.35rem;
+    }
+
+    .hero-mini-sub {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-matrix {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.6rem;
+    }
+
+    .hero-matrix-card {
+      border-radius: 0.9rem;
+      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.12), transparent 55%);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      padding: 0.5rem 0.6rem;
+      font-size: 0.72rem;
+      color: var(--muted);
+      min-height: 68px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hero-matrix-card:nth-child(2n) {
+      background: radial-gradient(circle at 100% 0, rgba(34, 197, 94, 0.18), transparent 55%);
+    }
+
+    .hero-matrix-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(148, 163, 184, 0.85);
+      margin-bottom: 0.2rem;
+    }
+
+    .hero-matrix-main {
+      font-size: 0.8rem;
+      color: var(--text);
+      font-weight: 500;
+      margin-bottom: 0.2rem;
+    }
+
+    .hero-matrix-meta {
+      font-size: 0.7rem;
+      opacity: 0.9;
+    }
+
+    .hero-glow {
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.08), transparent),
+                  radial-gradient(circle at 100% 0, rgba(34, 197, 94, 0.12), transparent);
+      opacity: 0.7;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* SECTORES / AGENTES */
+
+    .sectors {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.25rem 3rem;
+    }
+
+    .section-header {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .section-kicker {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(148, 163, 184, 0.9);
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+
+    .section-description {
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 36rem;
+    }
+
+    .sector-block {
+      margin-bottom: 2rem;
+      border-radius: var(--border-radius-lg);
+      padding: 1.25rem 1.15rem 1.3rem;
+      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.22), transparent 55%),
+                  radial-gradient(circle at 100% 100%, rgba(15, 23, 42, 0.95), #020617 80%);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sector-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .sector-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .sector-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+    }
+
+    .sector-icon i {
+      font-size: 0.95rem;
+      color: var(--primary);
+    }
+
+    .sector-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .sector-caption {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .sector-tagline {
+      font-size: 0.78rem;
+      color: rgba(209, 213, 219, 0.9);
+    }
+
+    .agents-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.85rem;
+    }
+
+    @media (max-width: 900px) {
+      .agents-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .agents-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .agent-card {
+      position: relative;
+      border-radius: var(--border-radius-md);
+      padding: 0.75rem 0.8rem;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid var(--card-outline);
+      cursor: pointer;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      min-height: 90px;
+    }
+
+    .agent-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.22), transparent 55%);
+      opacity: 0;
+      transition: opacity var(--transition-fast);
+      pointer-events: none;
+    }
+
+    .agent-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
+      border-color: rgba(56, 189, 248, 0.85);
+      background: rgba(15, 23, 42, 1);
+    }
+
+    .agent-card:hover::before {
+      opacity: 1;
+    }
+
+    .agent-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .agent-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .agent-icon i {
+      font-size: 0.9rem;
+      color: var(--primary);
+    }
+
+    .agent-title {
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .agent-label {
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .agent-footer {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      color: rgba(148, 163, 184, 0.9);
+    }
+
+    .agent-footer span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+    }
+
+    .agent-footer i {
+      font-size: 0.65rem;
+    }
+
+    /* CTA FINAL */
+
+    .cta {
+      max-width: var(--max-width);
+      margin: 0 auto 3.5rem;
+      padding: 1.75rem 1.25rem 0;
+    }
+
+    .cta-box {
+      border-radius: var(--border-radius-lg);
+      background:
+        radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.5), transparent 65%),
+        radial-gradient(circle at 100% 100%, rgba(34, 197, 94, 0.4), #020617 85%);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      padding: 1.4rem 1.35rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .cta-title {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .cta-text {
+      font-size: 0.86rem;
+      color: rgba(226, 232, 240, 0.9);
+      max-width: 34rem;
+    }
+
+    .cta-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .cta-meta {
+      font-size: 0.78rem;
+      color: rgba(226, 232, 240, 0.95);
+    }
+
+    /* FOOTER */
+
+    footer {
+      font-size: 0.75rem;
+      color: rgba(148, 163, 184, 0.9);
+      padding: 1.5rem 1.25rem 2rem;
+      border-top: 1px solid rgba(30, 64, 175, 0.5);
+      margin-top: auto;
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-inner span {
+      opacity: 0.85;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- NAVBAR -->
+    <header class="navbar">
+      <div class="navbar-inner">
+        <div class="brand">
+          <div class="brand-logo">
+            <span>M</span>
+          </div>
+          <div>
+            <div class="brand-text-title">Megafy</div>
+            <div class="brand-text-sub">Laboratorio de agentes IA</div>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="#agentes">Agentes</a>
+          <a href="#sectores-salud">Sector Salud</a>
+          <a href="#sectores-seguros">Seguros</a>
+          <a href="#sectores-finanzas">Financiero</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <main>
+      <section class="hero">
+        <div>
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            Experimentos reales en producción
+          </div>
+          <h1 class="hero-title">
+            Bienvenido al laboratorio de agentes IA de <span>Megafy</span>
+          </h1>
+          <p class="hero-subtitle">
+            Aquí reunimos nuestros agentes de inteligencia artificial enfocados en sectores de alto impacto:
+            salud, seguros y financiero. Cada agente nace de casos reales de cliente y se integra con tus
+            procesos y sistemas existentes.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#agentes" class="btn btn-primary">
+              <i class="fa-solid fa-flask"></i>
+              Ver agentes disponibles
+            </a>
+            <a href="#contacto" class="btn btn-ghost">
+              <i class="fa-regular fa-comments"></i>
+              Hablar con nuestro equipo
+            </a>
+          </div>
+
+          <div class="hero-meta">
+            <span><strong>+3 sectores clave</strong> cubiertos</span>
+            <span><strong>Agentes listos</strong> para personalizar</span>
+            <span><strong>Enfoque</strong> en ROI y time-to-value</span>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-orbit">
+            <div class="hero-orbit-inner">
+              <div class="chip">
+                <i class="fa-solid fa-robot"></i>
+                Agents-as-a-Service
+              </div>
+
+              <div class="hero-badges">
+                <div class="hero-badge">
+                  <i class="fa-solid fa-heart-pulse"></i>
+                  Salud digital
+                </div>
+                <div class="hero-badge">
+                  <i class="fa-solid fa-shield-halved"></i>
+                  Seguros inteligentes
+                </div>
+                <div class="hero-badge">
+                  <i class="fa-solid fa-coins"></i>
+                  Operaciones COMEX
+                </div>
+              </div>
+
+              <div class="hero-mini-title">Orquestador de agentes</div>
+              <div class="hero-mini-sub">
+                Gestiona múltiples agentes IA coordinando flujos, controles y trazabilidad en un solo punto.
+              </div>
+
+              <div class="hero-matrix">
+                <div class="hero-matrix-card">
+                  <div class="hero-matrix-label">Sector Salud</div>
+                  <div class="hero-matrix-main">Preadmisión 100% digital</div>
+                  <div class="hero-matrix-meta">Pacientes quirúrgicos y ambulatorios</div>
+                </div>
+                <div class="hero-matrix-card">
+                  <div class="hero-matrix-label">Ejecutivos</div>
+                  <div class="hero-matrix-main">Copilot ejecutivos</div>
+                  <div class="hero-matrix-meta">Contexto unificado para la toma de decisiones</div>
+                </div>
+                <div class="hero-matrix-card">
+                  <div class="hero-matrix-label">Seguros</div>
+                  <div class="hero-matrix-main">Onboarding guiado</div>
+                  <div class="hero-matrix-meta">Clientes, pólizas y siniestros</div>
+                </div>
+                <div class="hero-matrix-card">
+                  <div class="hero-matrix-label">Financiero</div>
+                  <div class="hero-matrix-main">Operaciones COMEX</div>
+                  <div class="hero-matrix-meta">Control documental y cumplimiento</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="hero-glow"></div>
+        </div>
+      </section>
+
+      <!-- SECCIONES DE AGENTES -->
+      <section id="agentes" class="sectors">
+        <header class="section-header">
+          <div class="section-kicker">Galería de agentes IA</div>
+          <h2 class="section-title">Explora nuestros agentes por sector</h2>
+          <p class="section-description">
+            Cada agente está diseñado para resolver un punto de dolor específico, pero todos comparten la misma
+            filosofía: integración rápida, seguridad empresarial y foco en resultados medibles.
+          </p>
+        </header>
+
+        <!-- SECTOR SALUD -->
+        <section id="sectores-salud" class="sector-block">
+          <div class="sector-header">
+            <div class="sector-title-wrap">
+              <div class="sector-icon">
+                <i class="fa-solid fa-heart-pulse"></i>
+              </div>
+              <div>
+                <div class="sector-name">Sector Salud</div>
+                <div class="sector-caption">
+                  Experiencias digitales para pacientes, médicos y equipos administrativos.
+                </div>
+              </div>
+            </div>
+            <div class="sector-tagline">
+              Foco en trazabilidad clínica, cumplimiento normativo y experiencia del paciente.
+            </div>
+          </div>
+
+          <div class="agents-grid">
+            <!-- Preadmisión Pacientes quirúrgicos -->
+            <a href="#contacto" class="agent-card">
+              <div class="agent-header">
+                <div class="agent-icon">
+                  <i class="fa-solid fa-bed-pulse"></i>
+                </div>
+                <div>
+                  <div class="agent-title">Preadmisión Pacientes quirúrgicos</div>
+                  <div class="agent-label">
+                    Checklists, consentimientos y documentación previa a cirugía.
+                  </div>
+                </div>
+              </div>
+              <div class="agent-footer">
+                <span>
+                  <i class="fa-regular fa-circle-check"></i>
+                  Menos trámites presenciales
+                </span>
+                <span>
+                  Ver detalle
+                  <i class="fa-solid fa-arrow-right-long"></i>
+                </span>
+              </div>
+            </a>
+
+            <!-- Copilot ejecutivos -->
+            <a href="#contacto" class="agent-card">
+              <div class="agent-header">
+                <div class="agent-icon">
+                  <i class="fa-solid fa-user-tie"></i>
+                </div>
+                <div>
+                  <div class="agent-title">Copilot ejecutivos</div>
+                  <div class="agent-label">
+                    Asistente IA para directivos de clínicas y hospitales.
+                  </div>
+                </div>
+              </div>
+              <div class="agent-footer">
+                <span>
+                  <i class="fa-regular fa-lightbulb"></i>
+                  Insights en tiempo real
+                </span>
+                <span>
+                  Ver detalle
+                  <i class="fa-solid fa-arrow-right-long"></i>
+                </span>
+              </div>
+            </a>
+
+            <!-- Preadmisión procedimientos clínicos -->
+            <a href="#contacto" class="agent-card">
+              <div class="agent-header">
+                <div class="agent-icon">
+                  <i class="fa-solid fa-clipboard-list"></i>
+                </div>
+                <div>
+                  <div class="agent-title">Preadmisión procedimientos clínicos</div>
+                  <div class="agent-label">
+                    Orquestación de cuestionarios, autorizaciones y documentación.
+                  </div>
+                </div>
+              </div>
+              <div class="agent-footer">
+                <span>
+                  <i class="fa-solid fa-stethoscope"></i>
+                  Protocolos configurables
+                </span>
+                <span>
+                  Ver detalle
+                  <i class="fa-solid fa-arrow-right-long"></i>
+                </span>
+              </div>
+            </a>
+          </div>
+        </section>
+
+        <!-- SECTOR SEGUROS -->
+        <section id="sectores-seguros" class="sector-block">
+          <div class="sector-header">
+            <div class="sector-title-wrap">
+              <div class="sector-icon">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <div>
+                <div class="sector-name">Sector Seguros</div>
+                <div class="sector-caption">
+                  Agentes IA para productos de salud y procesos de onboarding digital.
+                </div>
+              </div>
+            </div>
+            <div class="sector-tagline">
+              Reducción de tiempos de alta, menor fricción para el cliente y mejor control de riesgos.
+            </div>
+          </div>
+
+          <div class="agents-grid">
+            <!-- Seguros salud -->
+            <a href="#contacto" class="agent-card">
+              <div class="agent-header">
+                <div class="agent-icon">
+                  <i class="fa-solid fa-shield-heart"></i>
+                </div>
+                <div>
+                  <div class="agent-title">Seguros salud</div>
+                  <div class="agent-label">
+                    Agente IA especializado en pólizas y beneficios de salud.
+                  </div>
+                </div>
+              </div>
+              <div class="agent-footer">
+                <span>
+                  <i class="fa-solid fa-headset"></i>
+                  Asistencia omnicanal
+                </span>
+                <span>
+                  Ver detalle
+                  <i class="fa-solid fa-arrow-right-long"></i>
+                </span>
+              </div>
+            </a>
+
+            <!-- Onboarding Clientes -->
+            <a href="#contacto" class="agent-card">
+              <div class="agent-header">
+                <div class="agent-icon">
+                  <i class="fa-solid fa-user-plus"></i>
+                </div>
+                <div>
+                  <div class="agent-title">Onboarding Clientes</div>
+                  <div class="agent-label">
+                    Alta guiada con verificación de identidad y captura de datos.
+                  </div>
+                </div>
+              </div>
+              <div class="agent-footer">
+                <span>
+                  <i class="fa-regular fa-clock"></i>
+                  Menos tiempo de alta
+                </span>
+                <span>
+                  Ver detalle
+                  <i class="fa-solid fa-arrow-right-long"></i>
+                </span>
+              </div>
+            </a>
+          </div>
+        </section>
+
+        <!-- SECTOR FINANCIERO -->
+        <section id="sectores-finanzas" class="sector-block">
+          <div class="sector-header">
+            <div class="sector-title-wrap">
+              <div class="sector-icon">
+                <i class="fa-solid fa-coins"></i>
+              </div>
+              <div>
+                <div class="sector-name">Sector Financiero</div>
+                <div class="sector-caption">
+                  Agentes especializados en operaciones de comercio exterior (COMEX).
+                </div>
+              </div>
+            </div>
+            <div class="sector-tagline">
+              Menos riesgo operativo, cumplimiento normativo y mejor visibilidad del ciclo completo.
+            </div>
+          </div>
+
+          <div class="agents-grid">
+            <!-- Operaciones Comex -->
+            <a href="#contacto" class="agent-card">
+              <div class="agent-header">
+                <div class="agent-icon">
+                  <i class="fa-solid fa-globe"></i>
+                </div>
+                <div>
+                  <div class="agent-title">Operaciones Comex</div>
+                  <div class="agent-label">
+                    Asistente para operaciones de importación y exportación.
+                  </div>
+                </div>
+              </div>
+              <div class="agent-footer">
+                <span>
+                  <i class="fa-solid fa-file-contract"></i>
+                  Documentación y hitos
+                </span>
+                <span>
+                  Ver detalle
+                  <i class="fa-solid fa-arrow-right-long"></i>
+                </span>
+              </div>
+            </a>
+
+            <!-- Alta operación COMEX -->
+            <a href="#contacto" class="agent-card">
+              <div class="agent-header">
+                <div class="agent-icon">
+                  <i class="fa-solid fa-file-circle-plus"></i>
+                </div>
+                <div>
+                  <div class="agent-title">Alta operación COMEX</div>
+                  <div class="agent-label">
+                    Registro guiado de nuevas operaciones con controles de cumplimiento.
+                  </div>
+                </div>
+              </div>
+              <div class="agent-footer">
+                <span>
+                  <i class="fa-solid fa-shield"></i>
+                  Reglas de negocio configurables
+                </span>
+                <span>
+                  Ver detalle
+                  <i class="fa-solid fa-arrow-right-long"></i>
+                </span>
+              </div>
+            </a>
+          </div>
+        </section>
+      </section>
+
+      <!-- CTA FINAL -->
+      <section id="contacto" class="cta">
+        <div class="cta-box">
+          <h3 class="cta-title">¿Quieres un agente IA a medida para tu proceso?</h3>
+          <p class="cta-text">
+            Partimos de estos agentes preconstruidos y los adaptamos a tu operación, tus sistemas y tus
+            indicadores de negocio. Podemos conectarnos a tu BPM, core, RPA o soluciones cloud existentes.
+          </p>
+          <div class="cta-footer">
+            <div class="cta-meta">
+              Cuéntanos tu caso y te mostramos un prototipo funcional en semanas, no meses.
+            </div>
+            <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+              <a href="mailto:contacto@megafy.info" class="btn btn-primary">
+                <i class="fa-regular fa-envelope"></i>
+                Escríbenos
+              </a>
+              <a href="#agentes" class="btn btn-ghost">
+                <i class="fa-solid fa-list-check"></i>
+                Ver agentes de nuevo
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-inner">
+        <span>© <span id="year"></span> Megafy. Laboratorio de agentes IA.</span>
+        <span>Chile · Argentina · México · España</span>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Año dinámico en el footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
