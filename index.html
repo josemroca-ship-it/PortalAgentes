@@ -90,7 +90,7 @@
       height: 32px;
       display: flex;
       align-items: center;
-      background: #0b2340; /* azul de fondo como en el logo */
+      background: #0b2340; /* fondo azul del logo */
       padding: 4px 10px;
       border-radius: 6px;
     }
@@ -739,7 +739,7 @@
       cursor: pointer;
       font-size: 0.75rem;
       color: #4b5563;
-      transition: background 150ms ease-out, transform 150ms ease-out, border-color 150ms ease-out, color 150ms ease-out;
+      transition: background 150ms ease-out, transform 150ms ease-out, border-color 150ms ease-out, color 150ms.ease-out;
     }
 
     .modal-btn:hover {
@@ -760,16 +760,16 @@
     }
 
     .modal-body {
-      padding: 1rem 1rem 0.5rem;
-      overflow-y: auto;
-      font-size: 0.85rem;
-      color: #111827;
+      padding: 0;
+      height: 65vh;
+      overflow: hidden;
     }
 
-    .modal-body p {
-      margin-bottom: 0.7rem;
-      line-height: 1.5;
-      color: #374151;
+    .modal-body iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
     }
 
     .modal-footer {
@@ -1299,15 +1299,14 @@
           </button>
         </div>
       </header>
-      <div class="modal-body" style="padding:0; height:100%;">
-        <iframe id="agent-modal-iframe" src="" style="width:100%; height:65vh; border:0; border-radius:0 0 1rem 1rem;"></iframe>
+      <div class="modal-body">
+        <iframe id="agent-modal-iframe" src=""></iframe>
       </div>
       <footer class="modal-footer">
         <div class="modal-footer-left" id="agent-modal-footer-text">
-          Las demos se abren en una nueva pestaña para que puedas volver a este laboratorio cuando quieras.
+          Las demos se cargan directamente aquí para que puedas explorar el flujo sin salir del laboratorio.
         </div>
         <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
-          <!-- Botón eliminado ya que ahora se carga dentro del modal -->
           <button id="agent-modal-close-footer" class="btn btn-ghost" type="button">
             <i class="fa-solid fa-xmark"></i>
             Cerrar
@@ -1372,7 +1371,7 @@
     const modalTitle = document.getElementById("agent-modal-title");
     const modalSubtitle = document.getElementById("agent-modal-subtitle");
     const modalIcon = document.getElementById("agent-modal-icon");
-    const modalLink = document.getElementById("agent-modal-link");
+    const modalIframe = document.getElementById("agent-modal-iframe");
     const btnClose = document.getElementById("agent-modal-close");
     const btnCloseFooter = document.getElementById("agent-modal-close-footer");
     const btnMaximize = document.getElementById("agent-modal-maximize");
@@ -1388,15 +1387,17 @@
       // Icono
       modalIcon.className = config.iconClass || "fa-solid fa-robot";
 
-      // Link específico por agente (Megafy por defecto)
-      document.getElementById('agent-modal-iframe').src = config.link || "https://www.megafy.net";
+      // Cargar URL en el iframe (Megafy.net por defecto)
+      if (modalIframe) {
+        modalIframe.src = config.link || "https://www.megafy.net";
+      }
 
       // Estado de tamaño
       isMaximized = false;
       modalWindow.classList.remove("maximized");
       btnMaximize.innerHTML = '<i class="fa-solid fa-up-right-and-down-left-from-center"></i>';
 
-      // Mostrar
+      // Mostrar modal
       modalOverlay.classList.add("visible");
       document.body.style.overflow = "hidden";
     }
@@ -1404,6 +1405,9 @@
     function closeAgentModal() {
       modalOverlay.classList.remove("visible");
       document.body.style.overflow = "";
+      if (modalIframe) {
+        modalIframe.src = ""; // limpia el iframe al cerrar
+      }
     }
 
     function toggleMaximizeModal() {
@@ -1412,4 +1416,37 @@
         modalWindow.classList.add("maximized");
         btnMaximize.innerHTML = '<i class="fa-solid fa-down-left-and-up-right-to-center"></i>';
       } else {
-        modalWindow.classL
+        modalWindow.classList.remove("maximized");
+        btnMaximize.innerHTML = '<i class="fa-solid fa-up-right-and-down-left-from-center"></i>';
+      }
+    }
+
+    // Listeners: todos los agentes abren la ventana
+    document.querySelectorAll(".agent-card").forEach(card => {
+      card.addEventListener("click", (e) => {
+        e.preventDefault();
+        const agentId = card.getAttribute("data-agent-id");
+        openAgentModal(agentId);
+      });
+    });
+
+    btnClose.addEventListener("click", closeAgentModal);
+    btnCloseFooter.addEventListener("click", closeAgentModal);
+    btnMaximize.addEventListener("click", toggleMaximizeModal);
+
+    // Cerrar al hacer clic fuera de la ventana
+    modalOverlay.addEventListener("click", (e) => {
+      if (e.target === modalOverlay) {
+        closeAgentModal();
+      }
+    });
+
+    // Cerrar con ESC
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && modalOverlay.classList.contains("visible")) {
+        closeAgentModal();
+      }
+    });
+  </script>
+</body>
+</html>
