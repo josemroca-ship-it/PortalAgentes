@@ -11,24 +11,25 @@
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
   />
 
   <style>
     :root {
-      --bg: #f5f7fb;
-      --bg-soft: #ffffff;
-      --card-bg: #ffffff;
-      --card-outline: #e5e7eb;
-      --primary: #2563eb;
-      --primary-soft: rgba(37, 99, 235, 0.08);
-      --accent: #16a34a;
-      --text: #0f172a;
-      --muted: #6b7280;
+      --bg: #020617;
+      --bg-soft: #020617;
+      --card-bg: #020617;
+      --card-outline: rgba(148, 163, 184, 0.35);
+      --primary: #38bdf8;
+      --primary-soft: rgba(56, 189, 248, 0.15);
+      --accent: #22c55e;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
       --border-radius-lg: 1.5rem;
       --border-radius-md: 1rem;
-      --shadow-soft: 0 14px 40px rgba(15, 23, 42, 0.08);
+      --shadow-soft: 0 18px 50px rgba(15, 23, 42, 0.85);
       --max-width: 1120px;
       --transition-fast: 180ms ease-out;
     }
@@ -41,7 +42,7 @@
 
     body {
       font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: radial-gradient(circle at top left, #e5efff 0, #f5f7fb 40%, #ffffff 100%);
+      background: radial-gradient(circle at top left, #0f172a 0, #020617 45%, #000 100%);
       color: var(--text);
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
@@ -64,9 +65,9 @@
       position: sticky;
       top: 0;
       z-index: 20;
-      backdrop-filter: blur(14px);
-      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
-      border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.9), transparent);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.15);
     }
 
     .navbar-inner {
@@ -89,21 +90,22 @@
       width: 32px;
       height: 32px;
       border-radius: 999px;
-      background: radial-gradient(circle at 30% 20%, #60a5fa, #2563eb 60%, #1d4ed8 100%);
+      background: radial-gradient(circle at 30% 20%, #38bdf8, #2563eb 50%, #0f172a 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 8px 22px rgba(37, 99, 235, 0.35);
-      color: #f9fafb;
-      font-weight: 700;
+      box-shadow: 0 8px 25px rgba(56, 189, 248, 0.6);
+    }
+
+    .brand-logo span {
       font-size: 0.9rem;
+      font-weight: 700;
       letter-spacing: 0.04em;
     }
 
     .brand-text-title {
       font-size: 0.95rem;
       font-weight: 600;
-      color: #111827;
     }
 
     .brand-text-sub {
@@ -137,7 +139,7 @@
     }
 
     .nav-links a:hover {
-      color: #111827;
+      color: var(--text);
     }
 
     .nav-links a:hover::after {
@@ -170,10 +172,9 @@
       font-size: 0.8rem;
       padding: 0.25rem 0.65rem;
       border-radius: 999px;
-      background: #eef2ff;
-      border: 1px solid #d4d4ff;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(148, 163, 184, 0.4);
       margin-bottom: 0.9rem;
-      color: #4b5563;
     }
 
     .eyebrow-dot {
@@ -189,11 +190,10 @@
       line-height: 1.08;
       letter-spacing: -0.04em;
       margin-bottom: 0.9rem;
-      color: #0f172a;
     }
 
     .hero-title span {
-      background: linear-gradient(to right, #2563eb, #60a5fa);
+      background: linear-gradient(to right, #38bdf8, #22c55e);
       -webkit-background-clip: text;
       color: transparent;
     }
@@ -229,28 +229,27 @@
     }
 
     .btn-primary {
-      background: linear-gradient(to right, #2563eb, #1d4ed8);
-      border-color: #1d4ed8;
+      background: radial-gradient(circle at 0 0, #38bdf8, #0ea5e9 40%, #0369a1 100%);
+      border-color: rgba(56, 189, 248, 0.7);
       color: #f9fafb;
-      box-shadow: 0 14px 32px rgba(37, 99, 235, 0.38);
+      box-shadow: 0 18px 40px rgba(8, 47, 73, 0.95);
     }
 
     .btn-primary:hover {
       transform: translateY(-1px) scale(1.01);
-      box-shadow: 0 18px 40px rgba(37, 99, 235, 0.45);
+      box-shadow: 0 22px 55px rgba(8, 47, 73, 1);
     }
 
     .btn-ghost {
-      background: #ffffff;
-      border-color: #e5e7eb;
-      color: #374151;
+      background: rgba(15, 23, 42, 0.8);
+      border-color: rgba(148, 163, 184, 0.55);
+      color: var(--muted);
     }
 
     .btn-ghost:hover {
-      color: #111827;
-      background: #f9fafb;
+      color: var(--text);
+      background: rgba(15, 23, 42, 1);
       transform: translateY(-1px);
-      border-color: #cbd5f5;
     }
 
     .hero-meta {
@@ -262,7 +261,7 @@
     }
 
     .hero-meta strong {
-      color: #111827;
+      color: var(--text);
       font-weight: 500;
     }
 
@@ -275,20 +274,20 @@
 
     .hero-orbit {
       position: relative;
-      border-radius: 1.75rem;
-      background: linear-gradient(to bottom right, #dbeafe, #eff6ff);
+      border-radius: 999px;
+      background: radial-gradient(circle at 20% 20%, #38bdf8, #1e293b 45%, #020617 100%);
       padding: 1px;
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+      box-shadow: 0 26px 60px rgba(15, 23, 42, 0.95);
     }
 
     .hero-orbit-inner {
       border-radius: inherit;
       background:
-        radial-gradient(circle at 10% 0, rgba(37, 99, 235, 0.08), transparent 60%),
-        radial-gradient(circle at 90% 100%, rgba(56, 189, 248, 0.1), transparent 60%),
-        #ffffff;
+        radial-gradient(circle at 10% 0, rgba(59, 130, 246, 0.5), transparent 60%),
+        radial-gradient(circle at 85% 100%, rgba(34, 197, 94, 0.35), transparent 60%),
+        #020617;
       padding: 1.4rem 1.3rem 1.5rem;
-      border: 1px solid #e0e7ff;
+      border: 1px solid rgba(148, 163, 184, 0.35);
       position: relative;
       overflow: hidden;
     }
@@ -297,9 +296,8 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at top center, rgba(248, 250, 252, 0.5), transparent 55%);
+      background: radial-gradient(circle at top center, rgba(248, 250, 252, 0.04), transparent 55%);
       pointer-events: none;
-      opacity: 0.7;
     }
 
     .chip {
@@ -309,12 +307,10 @@
       padding: 0.25rem 0.7rem;
       border-radius: 999px;
       font-size: 0.7rem;
-      border: 1px solid #c7d2fe;
-      background: #eef2ff;
-      color: #4b5563;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.85);
+      color: var(--muted);
       margin-bottom: 0.9rem;
-      position: relative;
-      z-index: 1;
     }
 
     .chip i {
@@ -327,17 +323,15 @@
       flex-wrap: wrap;
       gap: 0.6rem;
       margin-bottom: 1rem;
-      position: relative;
-      z-index: 1;
     }
 
     .hero-badge {
       font-size: 0.7rem;
       padding: 0.25rem 0.6rem;
       border-radius: 999px;
-      background: #ffffff;
-      border: 1px solid #e5e7eb;
-      color: #6b7280;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      color: var(--muted);
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
@@ -352,31 +346,24 @@
       font-size: 0.8rem;
       font-weight: 500;
       margin-bottom: 0.35rem;
-      color: #111827;
-      position: relative;
-      z-index: 1;
     }
 
     .hero-mini-sub {
       font-size: 0.72rem;
       color: var(--muted);
       margin-bottom: 0.9rem;
-      position: relative;
-      z-index: 1;
     }
 
     .hero-matrix {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 0.6rem;
-      position: relative;
-      z-index: 1;
     }
 
     .hero-matrix-card {
       border-radius: 0.9rem;
-      background: #f9fafb;
-      border: 1px solid #e5e7eb;
+      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.12), transparent 55%);
+      border: 1px solid rgba(148, 163, 184, 0.45);
       padding: 0.5rem 0.6rem;
       font-size: 0.72rem;
       color: var(--muted);
@@ -387,28 +374,37 @@
     }
 
     .hero-matrix-card:nth-child(2n) {
-      background: #eff6ff;
-      border-color: #dbeafe;
+      background: radial-gradient(circle at 100% 0, rgba(34, 197, 94, 0.18), transparent 55%);
     }
 
     .hero-matrix-label {
       font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: #6b7280;
+      color: rgba(148, 163, 184, 0.85);
       margin-bottom: 0.2rem;
     }
 
     .hero-matrix-main {
       font-size: 0.8rem;
-      color: #111827;
+      color: var(--text);
       font-weight: 500;
       margin-bottom: 0.2rem;
     }
 
     .hero-matrix-meta {
       font-size: 0.7rem;
-      opacity: 0.95;
+      opacity: 0.9;
+    }
+
+    .hero-glow {
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.08), transparent),
+                  radial-gradient(circle at 100% 0, rgba(34, 197, 94, 0.12), transparent);
+      opacity: 0.7;
+      z-index: -1;
+      pointer-events: none;
     }
 
     /* SECTORES / AGENTES */
@@ -430,13 +426,12 @@
       font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      color: #4b6ef5;
+      color: rgba(148, 163, 184, 0.9);
     }
 
     .section-title {
       font-size: 1.4rem;
       font-weight: 600;
-      color: #0f172a;
     }
 
     .section-description {
@@ -449,8 +444,9 @@
       margin-bottom: 2rem;
       border-radius: var(--border-radius-lg);
       padding: 1.25rem 1.15rem 1.3rem;
-      background: #ffffff;
-      border: 1px solid #e5e7eb;
+      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.22), transparent 55%),
+                  radial-gradient(circle at 100% 100%, rgba(15, 23, 42, 0.95), #020617 80%);
+      border: 1px solid rgba(148, 163, 184, 0.5);
       box-shadow: var(--shadow-soft);
       position: relative;
       overflow: hidden;
@@ -477,19 +473,18 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #eff6ff;
-      border: 1px solid #bfdbfe;
-      color: var(--primary);
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.7);
     }
 
     .sector-icon i {
       font-size: 0.95rem;
+      color: var(--primary);
     }
 
     .sector-name {
       font-size: 0.95rem;
       font-weight: 600;
-      color: #111827;
     }
 
     .sector-caption {
@@ -499,7 +494,7 @@
 
     .sector-tagline {
       font-size: 0.78rem;
-      color: #4b5563;
+      color: rgba(209, 213, 219, 0.9);
     }
 
     .agents-grid {
@@ -524,7 +519,7 @@
       position: relative;
       border-radius: var(--border-radius-md);
       padding: 0.75rem 0.8rem;
-      background: var(--card-bg);
+      background: rgba(15, 23, 42, 0.96);
       border: 1px solid var(--card-outline);
       cursor: pointer;
       transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
@@ -539,7 +534,7 @@
       position: absolute;
       inset: 0;
       border-radius: inherit;
-      background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.1), transparent 60%);
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.22), transparent 55%);
       opacity: 0;
       transition: opacity var(--transition-fast);
       pointer-events: none;
@@ -547,9 +542,9 @@
 
     .agent-card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 16px 35px rgba(15, 23, 42, 0.12);
-      border-color: #2563eb;
-      background: #f9fafb;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
+      border-color: rgba(56, 189, 248, 0.85);
+      background: rgba(15, 23, 42, 1);
     }
 
     .agent-card:hover::before {
@@ -566,23 +561,22 @@
       width: 30px;
       height: 30px;
       border-radius: 999px;
-      background: #eff6ff;
-      border: 1px solid #bfdbfe;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.7);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      color: var(--primary);
     }
 
     .agent-icon i {
       font-size: 0.9rem;
+      color: var(--primary);
     }
 
     .agent-title {
       font-size: 0.85rem;
       font-weight: 500;
-      color: #111827;
     }
 
     .agent-label {
@@ -596,7 +590,7 @@
       align-items: center;
       justify-content: space-between;
       font-size: 0.72rem;
-      color: #1d4ed8;
+      color: rgba(148, 163, 184, 0.9);
     }
 
     .agent-footer span {
@@ -607,174 +601,6 @@
 
     .agent-footer i {
       font-size: 0.65rem;
-    }
-
-    /* MODAL */
-
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(15, 23, 42, 0.35);
-      backdrop-filter: blur(8px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 40;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 180ms ease-out;
-    }
-
-    .modal-overlay.visible {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .modal-window {
-      background: #ffffff;
-      border-radius: 1.25rem;
-      border: 1px solid #e5e7eb;
-      box-shadow: 0 22px 60px rgba(15, 23, 42, 0.24);
-      max-width: 720px;
-      width: 90vw;
-      max-height: 80vh;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      transform: translateY(10px) scale(0.99);
-      transition: transform 180ms ease-out;
-    }
-
-    .modal-overlay.visible .modal-window {
-      transform: translateY(0) scale(1);
-    }
-
-    .modal-window.maximized {
-      max-width: none;
-      max-height: none;
-      width: 96vw;
-      height: 94vh;
-    }
-
-    .modal-header {
-      padding: 0.75rem 1rem;
-      border-bottom: 1px solid #e5e7eb;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.75rem;
-      background: #f9fafb;
-    }
-
-    .modal-header-left {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-      min-width: 0;
-    }
-
-    .modal-icon-circle {
-      width: 32px;
-      height: 32px;
-      border-radius: 999px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #eff6ff;
-      border: 1px solid #bfdbfe;
-      flex-shrink: 0;
-      color: var(--primary);
-    }
-
-    .modal-header-texts {
-      display: flex;
-      flex-direction: column;
-      gap: 0.1rem;
-      min-width: 0;
-    }
-
-    .modal-title {
-      font-size: 0.9rem;
-      font-weight: 600;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      color: #111827;
-    }
-
-    .modal-subtitle {
-      font-size: 0.75rem;
-      color: var(--muted);
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
-    }
-
-    .modal-controls {
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-    }
-
-    .modal-btn {
-      width: 28px;
-      height: 28px;
-      border-radius: 999px;
-      border: 1px solid #e5e7eb;
-      background: #ffffff;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 0.75rem;
-      color: #4b5563;
-      transition: background 150ms ease-out, transform 150ms ease-out, border-color 150ms ease-out, color 150ms ease-out;
-    }
-
-    .modal-btn:hover {
-      background: #eff6ff;
-      border-color: #c7d2fe;
-      color: #111827;
-      transform: translateY(-1px);
-    }
-
-    .modal-btn.close {
-      border-color: #fecaca;
-      color: #b91c1c;
-    }
-
-    .modal-btn.close:hover {
-      background: #fee2e2;
-      border-color: #fecaca;
-    }
-
-    .modal-body {
-      padding: 1rem 1rem 0.5rem;
-      overflow-y: auto;
-      font-size: 0.85rem;
-      color: #111827;
-    }
-
-    .modal-body p {
-      margin-bottom: 0.7rem;
-      line-height: 1.5;
-      color: #374151;
-    }
-
-    .modal-footer {
-      padding: 0.75rem 1rem 0.9rem;
-      border-top: 1px solid #e5e7eb;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.75rem;
-      background: #f9fafb;
-      font-size: 0.78rem;
-      color: #4b5563;
-    }
-
-    .modal-footer-left {
-      max-width: 60%;
     }
 
     /* CTA FINAL */
@@ -788,9 +614,9 @@
     .cta-box {
       border-radius: var(--border-radius-lg);
       background:
-        radial-gradient(circle at 0 0, rgba(37, 99, 235, 0.12), transparent 70%),
-        #ffffff;
-      border: 1px solid #e5e7eb;
+        radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.5), transparent 65%),
+        radial-gradient(circle at 100% 100%, rgba(34, 197, 94, 0.4), #020617 85%);
+      border: 1px solid rgba(148, 163, 184, 0.6);
       padding: 1.4rem 1.35rem;
       display: flex;
       flex-direction: column;
@@ -801,12 +627,11 @@
     .cta-title {
       font-size: 1rem;
       font-weight: 600;
-      color: #0f172a;
     }
 
     .cta-text {
       font-size: 0.86rem;
-      color: #4b5563;
+      color: rgba(226, 232, 240, 0.9);
       max-width: 34rem;
     }
 
@@ -821,18 +646,17 @@
 
     .cta-meta {
       font-size: 0.78rem;
-      color: #4b5563;
+      color: rgba(226, 232, 240, 0.95);
     }
 
     /* FOOTER */
 
     footer {
       font-size: 0.75rem;
-      color: #6b7280;
+      color: rgba(148, 163, 184, 0.9);
       padding: 1.5rem 1.25rem 2rem;
-      border-top: 1px solid #e5e7eb;
+      border-top: 1px solid rgba(30, 64, 175, 0.5);
       margin-top: auto;
-      background: #ffffff;
     }
 
     .footer-inner {
@@ -846,7 +670,7 @@
     }
 
     .footer-inner span {
-      opacity: 0.9;
+      opacity: 0.85;
     }
   </style>
 </head>
@@ -856,7 +680,9 @@
     <header class="navbar">
       <div class="navbar-inner">
         <div class="brand">
-          <div class="brand-logo">M</div>
+          <div class="brand-logo">
+            <span>M</span>
+          </div>
           <div>
             <div class="brand-text-title">Megafy</div>
             <div class="brand-text-sub">Laboratorio de agentes IA</div>
@@ -958,6 +784,7 @@
               </div>
             </div>
           </div>
+          <div class="hero-glow"></div>
         </div>
       </section>
 
@@ -993,9 +820,7 @@
 
           <div class="agents-grid">
             <!-- Preadmisión Pacientes quirúrgicos -->
-            <a href="#"
-               class="agent-card"
-               data-agent-id="salud-quirurgicos">
+            <a href="#contacto" class="agent-card">
               <div class="agent-header">
                 <div class="agent-icon">
                   <i class="fa-solid fa-bed-pulse"></i>
@@ -1020,9 +845,7 @@
             </a>
 
             <!-- Copilot ejecutivos -->
-            <a href="#"
-               class="agent-card"
-               data-agent-id="salud-copilot">
+            <a href="#contacto" class="agent-card">
               <div class="agent-header">
                 <div class="agent-icon">
                   <i class="fa-solid fa-user-tie"></i>
@@ -1047,9 +870,7 @@
             </a>
 
             <!-- Preadmisión procedimientos clínicos -->
-            <a href="#"
-               class="agent-card"
-               data-agent-id="salud-procedimientos">
+            <a href="#contacto" class="agent-card">
               <div class="agent-header">
                 <div class="agent-icon">
                   <i class="fa-solid fa-clipboard-list"></i>
@@ -1096,9 +917,7 @@
 
           <div class="agents-grid">
             <!-- Seguros salud -->
-            <a href="#"
-               class="agent-card"
-               data-agent-id="seguros-salud">
+            <a href="#contacto" class="agent-card">
               <div class="agent-header">
                 <div class="agent-icon">
                   <i class="fa-solid fa-shield-heart"></i>
@@ -1123,9 +942,7 @@
             </a>
 
             <!-- Onboarding Clientes -->
-            <a href="#"
-               class="agent-card"
-               data-agent-id="seguros-onboarding">
+            <a href="#contacto" class="agent-card">
               <div class="agent-header">
                 <div class="agent-icon">
                   <i class="fa-solid fa-user-plus"></i>
@@ -1172,9 +989,7 @@
 
           <div class="agents-grid">
             <!-- Operaciones Comex -->
-            <a href="#"
-               class="agent-card"
-               data-agent-id="fin-comex-operaciones">
+            <a href="#contacto" class="agent-card">
               <div class="agent-header">
                 <div class="agent-icon">
                   <i class="fa-solid fa-globe"></i>
@@ -1199,9 +1014,7 @@
             </a>
 
             <!-- Alta operación COMEX -->
-            <a href="#"
-               class="agent-card"
-               data-agent-id="fin-comex-alta">
+            <a href="#contacto" class="agent-card">
               <div class="agent-header">
                 <div class="agent-icon">
                   <i class="fa-solid fa-file-circle-plus"></i>
@@ -1264,179 +1077,9 @@
     </footer>
   </div>
 
-  <!-- MODAL DE AGENTE -->
-  <div id="agent-modal-overlay" class="modal-overlay">
-    <div id="agent-modal-window" class="modal-window">
-      <header class="modal-header">
-        <div class="modal-header-left">
-          <div class="modal-icon-circle">
-            <i id="agent-modal-icon" class="fa-solid fa-robot"></i>
-          </div>
-          <div class="modal-header-texts">
-            <div id="agent-modal-title" class="modal-title">Agente IA Megafy</div>
-            <div id="agent-modal-subtitle" class="modal-subtitle">Demo en Megafy.net</div>
-          </div>
-        </div>
-        <div class="modal-controls">
-          <button id="agent-modal-maximize" class="modal-btn" type="button" aria-label="Maximizar">
-            <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
-          </button>
-          <button id="agent-modal-close" class="modal-btn close" type="button" aria-label="Cerrar">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-        </div>
-      </header>
-      <div class="modal-body">
-        <p id="agent-modal-description">
-          Estás a punto de abrir la experiencia del agente IA seleccionada en Megafy.net.
-        </p>
-        <p>
-          En esta demo podrás navegar el flujo del agente, entender su lógica y ver cómo se integra con tus procesos.
-        </p>
-      </div>
-      <footer class="modal-footer">
-        <div class="modal-footer-left" id="agent-modal-footer-text">
-          Las demos se abren en una nueva pestaña sobre <strong>www.megafy.net</strong>.
-        </div>
-        <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
-          <a id="agent-modal-link"
-             href="https://www.megafy.net"
-             class="btn btn-primary"
-             target="_blank"
-             rel="noopener">
-            <i class="fa-solid fa-play"></i>
-            Abrir demo en Megafy.net
-          </a>
-          <button id="agent-modal-close-footer" class="btn btn-ghost" type="button">
-            <i class="fa-solid fa-xmark"></i>
-            Cerrar
-          </button>
-        </div>
-      </footer>
-    </div>
-  </div>
-
   <script>
     // Año dinámico en el footer
     document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Config sencillo para títulos e iconos
-    const AGENTS_CONFIG = {
-      "salud-quirurgicos": {
-        title: "Preadmisión Pacientes quirúrgicos",
-        subtitle: "Sector Salud · Preadmisión quirúrgica",
-        iconClass: "fa-solid fa-bed-pulse"
-      },
-      "salud-copilot": {
-        title: "Copilot ejecutivos",
-        subtitle: "Sector Salud · Gestión ejecutiva",
-        iconClass: "fa-solid fa-user-tie"
-      },
-      "salud-procedimientos": {
-        title: "Preadmisión procedimientos clínicos",
-        subtitle: "Sector Salud · Procedimientos ambulatorios",
-        iconClass: "fa-solid fa-clipboard-list"
-      },
-      "seguros-salud": {
-        title: "Seguros salud",
-        subtitle: "Sector Seguros · Productos de salud",
-        iconClass: "fa-solid fa-shield-heart"
-      },
-      "seguros-onboarding": {
-        title: "Onboarding Clientes",
-        subtitle: "Sector Seguros · Onboarding digital",
-        iconClass: "fa-solid fa-user-plus"
-      },
-      "fin-comex-operaciones": {
-        title: "Operaciones Comex",
-        subtitle: "Sector Financiero · COMEX",
-        iconClass: "fa-solid fa-globe"
-      },
-      "fin-comex-alta": {
-        title: "Alta operación COMEX",
-        subtitle: "Sector Financiero · Alta de operaciones",
-        iconClass: "fa-solid fa-file-circle-plus"
-      }
-    };
-
-    const DEMO_URL = "https://www.megafy.net";
-
-    const modalOverlay = document.getElementById("agent-modal-overlay");
-    const modalWindow = document.getElementById("agent-modal-window");
-    const modalTitle = document.getElementById("agent-modal-title");
-    const modalSubtitle = document.getElementById("agent-modal-subtitle");
-    const modalIcon = document.getElementById("agent-modal-icon");
-    const modalLink = document.getElementById("agent-modal-link");
-    const btnClose = document.getElementById("agent-modal-close");
-    const btnCloseFooter = document.getElementById("agent-modal-close-footer");
-    const btnMaximize = document.getElementById("agent-modal-maximize");
-
-    let isMaximized = false;
-
-    function openAgentModal(agentId) {
-      const config = AGENTS_CONFIG[agentId] || {};
-
-      modalTitle.textContent = config.title || "Agente IA Megafy";
-      modalSubtitle.textContent = config.subtitle || "Demo en Megafy.net";
-
-      // Icono
-      modalIcon.className = config.iconClass || "fa-solid fa-robot";
-
-      // Link (de momento siempre Megafy.net)
-      modalLink.href = DEMO_URL;
-
-      // Estado de tamaño
-      isMaximized = false;
-      modalWindow.classList.remove("maximized");
-      btnMaximize.innerHTML = '<i class="fa-solid fa-up-right-and-down-left-from-center"></i>';
-
-      // Mostrar
-      modalOverlay.classList.add("visible");
-      document.body.style.overflow = "hidden";
-    }
-
-    function closeAgentModal() {
-      modalOverlay.classList.remove("visible");
-      document.body.style.overflow = "";
-    }
-
-    function toggleMaximizeModal() {
-      isMaximized = !isMaximized;
-      if (isMaximized) {
-        modalWindow.classList.add("maximized");
-        btnMaximize.innerHTML = '<i class="fa-solid fa-down-left-and-up-right-to-center"></i>';
-      } else {
-        modalWindow.classList.remove("maximized");
-        btnMaximize.innerHTML = '<i class="fa-solid fa-up-right-and-down-left-from-center"></i>';
-      }
-    }
-
-    // Listeners: todos los agentes abren la ventana
-    document.querySelectorAll(".agent-card").forEach(card => {
-      card.addEventListener("click", (e) => {
-        e.preventDefault();
-        const agentId = card.getAttribute("data-agent-id");
-        openAgentModal(agentId);
-      });
-    });
-
-    btnClose.addEventListener("click", closeAgentModal);
-    btnCloseFooter.addEventListener("click", closeAgentModal);
-    btnMaximize.addEventListener("click", toggleMaximizeModal);
-
-    // Cerrar al hacer clic fuera de la ventana
-    modalOverlay.addEventListener("click", (e) => {
-      if (e.target === modalOverlay) {
-        closeAgentModal();
-      }
-    });
-
-    // Cerrar con ESC
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && modalOverlay.classList.contains("visible")) {
-        closeAgentModal();
-      }
-    });
   </script>
 </body>
 </html>
