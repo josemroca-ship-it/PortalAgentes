@@ -1373,7 +1373,6 @@
       }
     };
 
-    const DEMO_URL = "https://www.megafy.net";
 
     const modalOverlay = document.getElementById("agent-modal-overlay");
     const modalWindow = document.getElementById("agent-modal-window");
@@ -1391,7 +1390,7 @@
       const config = AGENTS_CONFIG[agentId] || {};
 
       modalTitle.textContent = config.title || "Agente IA Megafy";
-      modalSubtitle.textContent = config.subtitle || "Demo en Megafy.net";
+      modalSubtitle.textContent = config.subtitle || "Demo Megafy.net";
 
       // Icono
       modalIcon.className = config.iconClass || "fa-solid fa-robot";
