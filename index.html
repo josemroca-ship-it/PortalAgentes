@@ -1299,27 +1299,15 @@
           </button>
         </div>
       </header>
-      <div class="modal-body">
-        <p id="agent-modal-description">
-          Estás a punto de abrir la experiencia del agente IA seleccionada en una nueva pestaña.
-        </p>
-        <p>
-          En la demo podrás navegar el flujo del agente, entender su lógica y ver cómo se integra con tus procesos.
-        </p>
+      <div class="modal-body" style="padding:0; height:100%;">
+        <iframe id="agent-modal-iframe" src="" style="width:100%; height:65vh; border:0; border-radius:0 0 1rem 1rem;"></iframe>
       </div>
       <footer class="modal-footer">
         <div class="modal-footer-left" id="agent-modal-footer-text">
           Las demos se abren en una nueva pestaña para que puedas volver a este laboratorio cuando quieras.
         </div>
         <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
-          <a id="agent-modal-link"
-             href="#"
-             class="btn btn-primary"
-             target="_blank"
-             rel="noopener">
-            <i class="fa-solid fa-play"></i>
-            Abrir demo
-          </a>
+          <!-- Botón eliminado ya que ahora se carga dentro del modal -->
           <button id="agent-modal-close-footer" class="btn btn-ghost" type="button">
             <i class="fa-solid fa-xmark"></i>
             Cerrar
@@ -1401,7 +1389,7 @@
       modalIcon.className = config.iconClass || "fa-solid fa-robot";
 
       // Link específico por agente (Megafy por defecto)
-      modalLink.href = config.link || "https://www.megafy.net";
+      document.getElementById('agent-modal-iframe').src = config.link || "https://www.megafy.net";
 
       // Estado de tamaño
       isMaximized = false;
@@ -1424,37 +1412,4 @@
         modalWindow.classList.add("maximized");
         btnMaximize.innerHTML = '<i class="fa-solid fa-down-left-and-up-right-to-center"></i>';
       } else {
-        modalWindow.classList.remove("maximized");
-        btnMaximize.innerHTML = '<i class="fa-solid fa-up-right-and-down-left-from-center"></i>';
-      }
-    }
-
-    // Listeners: todos los agentes abren la ventana
-    document.querySelectorAll(".agent-card").forEach(card => {
-      card.addEventListener("click", (e) => {
-        e.preventDefault();
-        const agentId = card.getAttribute("data-agent-id");
-        openAgentModal(agentId);
-      });
-    });
-
-    btnClose.addEventListener("click", closeAgentModal);
-    btnCloseFooter.addEventListener("click", closeAgentModal);
-    btnMaximize.addEventListener("click", toggleMaximizeModal);
-
-    // Cerrar al hacer clic fuera de la ventana
-    modalOverlay.addEventListener("click", (e) => {
-      if (e.target === modalOverlay) {
-        closeAgentModal();
-      }
-    });
-
-    // Cerrar con ESC
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && modalOverlay.classList.contains("visible")) {
-        closeAgentModal();
-      }
-    });
-  </script>
-</body>
-</html>
+        modalWindow.classL
