@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Megafy AI Lab - Catálogo de Agentes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1a202c;
+            min-height: 100vh;
+        }
+
+        /* Scrollbar personalizado para el tema claro */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+
+        /* Animaciones */
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Estilo de Tarjeta Limpia */
+        .card {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border-color: #cbd5e1;
+        }
+
+        /* Modal Transition */
+        .modal-transition {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .maximized {
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            border-radius: 0 !important;
+            transform: none !important;
+            border: none !important;
+        }
+    </style>
+</head>
+<body class="relative overflow-x-hidden">
+
+    <!-- Navbar theme-light -->
+    <nav class="fixed w-full z-40 top-0 start-0 border-b border-gray-200 bg-white/90 backdrop-blur-md shadow-sm">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <a href="#" class="flex items-center space-x-2 rtl:space-x-reverse">
+                <!-- Logo simulado estilo Megafy -->
+                <i data-lucide="cpu" class="w-8 h-8 text-blue-600"></i>
+                <span class="self-center text-2xl font-bold whitespace-nowrap text-gray-900 tracking-tight">Megafy</span>
+            </a>
+            <div class="hidden md:block">
+                <span class="text-gray-500 text-sm font-medium">Laboratorio de Agentes IA</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section Theme Light -->
+    <section class="pt-32 pb-12 px-4 text-center relative">
+        <div class="absolute top-20 left-1/2 -translate-x-1/2 w-3/4 h-64 bg-blue-50/50 blur-[100px] -z-10 rounded-full"></div>
+        
+        <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl fade-in-up" style="animation-delay: 0.1s;">
+            Bienvenido al laboratorio de <br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Agentes IA de Megafy</span>
+        </h1>
+        <p class="mb-8 text-lg font-normal text-gray-600 lg:text-xl sm:px-16 lg:px-48 fade-in-up" style="animation-delay: 0.2s;">
+            Explore nuestra colección de agentes inteligentes diseñados para transformar la eficiencia operativa en Salud, Seguros y Finanzas.
+        </p>
+    </section>
+
+    <!-- Main Content: Sectors Theme Light -->
+    <main class="max-w-screen-xl mx-auto px-4 pb-24 space-y-16">
+
+        <!-- Sector Salud -->
+        <section class="fade-in-up" style="animation-delay: 0.3s;">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="p-2 bg-emerald-100 rounded-lg text-emerald-600">
+                    <i data-lucide="heart-pulse" class="w-6 h-6"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-gray-900">Sector Salud</h2>
+                <div class="h-px bg-gray-200 flex-grow ml-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="card rounded-xl p-6 flex flex-col justify-between h-full cursor-pointer" onclick="openAgent('Preadmisión Pacientes quirúrgicos')">
+                    <div>
+                        <div class="w-12 h-12 rounded-full bg-emerald-50 border border-emerald-100 flex items-center justify-center mb-4 text-emerald-600 group-hover:scale-110 transition-transform">
+                            <i data-lucide="clipboard-list" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-900">Preadmisión Pacientes quirúrgicos</h3>
+                        <p class="text-gray-600 text-sm">Automatización del triaje y preparación documental para cirugías programadas.</p>
+                    </div>
+                    <button class="mt-6 flex items-center text-blue-600 text-sm font-semibold hover:text-blue-700 transition-colors">
+                        Ver Agente <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                    </button>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card rounded-xl p-6 flex flex-col justify-between h-full cursor-pointer" onclick="openAgent('Copilot ejecutivos')">
+                    <div>
+                        <div class="w-12 h-12 rounded-full bg-emerald-50 border border-emerald-100 flex items-center justify-center mb-4 text-emerald-600">
+                            <i data-lucide="bot" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-900">Copilot ejecutivos</h3>
+                        <p class="text-gray-600 text-sm">Asistente inteligente para la toma de decisiones directivas en entornos hospitalarios.</p>
+                    </div>
+                    <button class="mt-6 flex items-center text-blue-600 text-sm font-semibold hover:text-blue-700 transition-colors">
+                        Ver Agente <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                    </button>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="card rounded-xl p-6 flex flex-col justify-between h-full cursor-pointer" onclick="openAgent('Preadmisión procedimientos clínicos')">
+                    <div>
+                        <div class="w-12 h-12 rounded-full bg-emerald-50 border border-emerald-100 flex items-center justify-center mb-4 text-emerald-600">
+                            <i data-lucide="activity" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-900">Preadmisión procedimientos clínicos</h3>
+                        <p class="text-gray-600 text-sm">Gestión ágil de ingresos para procedimientos ambulatorios y pruebas diagnósticas.</p>
+                    </div>
+                    <button class="mt-6 flex items-center text-blue-600 text-sm font-semibold hover:text-blue-700 transition-colors">
+                        Ver Agente <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sector Seguros -->
+        <section class="fade-in-up" style="animation-delay: 0.4s;">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="p-2 bg-indigo-100 rounded-lg text-indigo-600">
+                    <i data-lucide="shield-check" class="w-6 h-6"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-gray-900">Sector Seguros</h2>
+                <div class="h-px bg-gray-200 flex-grow ml-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="card rounded-xl p-6 flex flex-col justify-between h-full cursor-pointer" onclick="openAgent('Seguros salud')">
+                    <div>
+                        <div class="w-12 h-12 rounded-full bg-indigo-50 border border-indigo-100 flex items-center justify-center mb-4 text-indigo-600">
+                            <i data-lucide="heart-handshake" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-900">Seguros salud</h3>
+                        <p class="text-gray-600 text-sm">Gestión de pólizas, autorizaciones y siniestros de salud con IA conversacional.</p>
+                    </div>
+                    <button class="mt-6 flex items-center text-blue-600 text-sm font-semibold hover:text-blue-700 transition-colors">
+                        Ver Agente <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                    </button>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card rounded-xl p-6 flex flex-col justify-between h-full cursor-pointer" onclick="openAgent('Onboarding Clientes')">
+                    <div>
+                        <div class="w-12 h-12 rounded-full bg-indigo-50 border border-indigo-100 flex items-center justify-center mb-4 text-indigo-600">
+                            <i data-lucide="user-plus" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-900">Onboarding Clientes</h3>
+                        <p class="text-gray-600 text-sm">Proceso fluido de alta de nuevos asegurados con verificación automática.</p>
+                    </div>
+                    <button class="mt-6 flex items-center text-blue-600 text-sm font-semibold hover:text-blue-700 transition-colors">
+                        Ver Agente <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sector Financiero -->
+        <section class="fade-in-up" style="animation-delay: 0.5s;">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="p-2 bg-amber-100 rounded-lg text-amber-600">
+                    <i data-lucide="landmark" class="w-6 h-6"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-gray-900">Sector Financiero</h2>
+                <div class="h-px bg-gray-200 flex-grow ml-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="card rounded-xl p-6 flex flex-col justify-between h-full cursor-pointer" onclick="openAgent('Operaciones Comex')">
+                    <div>
+                        <div class="w-12 h-12 rounded-full bg-amber-50 border border-amber-100 flex items-center justify-center mb-4 text-amber-600">
+                            <i data-lucide="globe" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-900">Operaciones Comex</h3>
+                        <p class="text-gray-600 text-sm">Agente experto en comercio exterior, regulaciones y documentación internacional.</p>
+                    </div>
+                    <button class="mt-6 flex items-center text-blue-600 text-sm font-semibold hover:text-blue-700 transition-colors">
+                        Ver Agente <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                    </button>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card rounded-xl p-6 flex flex-col justify-between h-full cursor-pointer" onclick="openAgent('Alta operación COMEX')">
+                    <div>
+                        <div class="w-12 h-12 rounded-full bg-amber-50 border border-amber-100 flex items-center justify-center mb-4 text-amber-600">
+                            <i data-lucide="file-check-2" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-900">Alta operación COMEX</h3>
+                        <p class="text-gray-600 text-sm">Automatización del alta y validación de nuevas operaciones de comercio exterior.</p>
+                    </div>
+                    <button class="mt-6 flex items-center text-blue-600 text-sm font-semibold hover:text-blue-700 transition-colors">
+                        Ver Agente <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Theme Light -->
+    <footer class="border-t border-gray-200 bg-white py-8">
+        <div class="max-w-screen-xl mx-auto px-4 text-center">
+            <p class="text-gray-500 text-sm">&copy; 2024 Megafy. Todos los derechos reservados. | IA Solutions Lab</p>
+        </div>
+    </footer>
+
+    <!-- Floating Window (Modal) Theme Light -->
+    <div id="agentModal" class="fixed z-50 hidden flex items-center justify-center" style="top:0; left:0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); backdrop-filter: blur(2px);">
+        
+        <!-- Modal Container Light -->
+        <div id="modalContainer" class="bg-white rounded-lg shadow-2xl border border-gray-200 flex flex-col modal-transition relative w-[90%] h-[85%] md:w-[80%] md:h-[80%] overflow-hidden">
+            
+            <!-- Modal Header Light -->
+            <div class="flex items-center justify-between px-4 py-2 bg-gray-100 border-b border-gray-200 handle cursor-move select-none">
+                <div class="flex items-center gap-2">
+                    <div class="w-3 h-3 rounded-full bg-red-500 hover:bg-red-400 cursor-pointer border border-red-600/20" onclick="closeModal()"></div>
+                    <div class="w-3 h-3 rounded-full bg-yellow-500 hover:bg-yellow-400 cursor-pointer border border-yellow-600/20"></div>
+                    <div class="w-3 h-3 rounded-full bg-green-500 hover:bg-green-400 cursor-pointer border border-green-600/20" onclick="toggleMaximize()"></div>
+                </div>
+                <span id="modalTitle" class="text-sm font-medium text-gray-700 ml-4 truncate">Agente IA</span>
+                <div class="flex items-center gap-2 ml-auto">
+                    <button onclick="toggleMaximize()" class="p-1 hover:bg-gray-200 rounded text-gray-500 hover:text-gray-800" title="Maximizar/Restaurar">
+                        <i data-lucide="maximize-2" class="w-4 h-4"></i>
+                    </button>
+                    <button onclick="closeModal()" class="p-1 hover:bg-red-100 rounded text-gray-500 hover:text-red-600" title="Cerrar">
+                        <i data-lucide="x" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Modal Body (Iframe) -->
+            <div class="flex-grow relative bg-white">
+                <!-- Loader placeholder Light -->
+                <div class="absolute inset-0 flex items-center justify-center bg-gray-50 text-gray-500 z-0">
+                    <div class="flex flex-col items-center">
+                        <i data-lucide="loader-2" class="w-8 h-8 animate-spin mb-2 text-blue-600"></i>
+                        <p>Conectando con Megafy...</p>
+                    </div>
+                </div>
+                <!-- The actual iframe -->
+                <iframe id="agentFrame" src="" class="relative z-10 w-full h-full border-none" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+            </div>
+            
+            <!-- Fallback Link Bar Light -->
+            <div class="bg-gray-50 py-1 px-4 text-center text-xs text-gray-500 border-t border-gray-200">
+                ¿No carga correctamente? <a href="https://www.megafy.net" target="_blank" class="text-blue-600 hover:underline ml-1">Abrir en pestaña nueva</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        const modal = document.getElementById('agentModal');
+        const modalContainer = document.getElementById('modalContainer');
+        const modalTitle = document.getElementById('modalTitle');
+        const agentFrame = document.getElementById('agentFrame');
+        let isMaximized = false;
+
+        function openAgent(agentName) {
+            modalTitle.textContent = "Megafy Lab: " + agentName;
+            // Load the target URL
+            agentFrame.src = "https://www.megafy.net"; 
+            
+            modal.classList.remove('hidden');
+            
+            // Prevent body scroll when modal is open
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+            agentFrame.src = ""; // Clear src to stop loading/playing
+            document.body.style.overflow = ''; // Restore scroll
+            
+            // Reset maximize state if closed
+            if(isMaximized) toggleMaximize();
+        }
+
+        function toggleMaximize() {
+            isMaximized = !isMaximized;
+            if (isMaximized) {
+                modalContainer.classList.add('maximized');
+                // Remove margins/rounding for full screen feel
+                modalContainer.classList.remove('rounded-lg', 'w-[90%]', 'h-[85%]', 'md:w-[80%]', 'md:h-[80%]');
+            } else {
+                modalContainer.classList.remove('maximized');
+                // Add margins/rounding back
+                modalContainer.classList.add('rounded-lg', 'w-[90%]', 'h-[85%]', 'md:w-[80%]', 'md:h-[80%]');
+            }
+        }
+
+        // Close modal on clicking outside the container (the dark overlay)
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
